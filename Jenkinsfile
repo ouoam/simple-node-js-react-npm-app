@@ -2,17 +2,14 @@ pipeline {
   agent {
     docker {
       image 'node:6-alpine'
-      args '''-p 3000:3000
--v $HOME/node_modules:/var/jenkins_home/workspace/test_github_master/node_modules'''
+      args '-p 3000:3000'
     }
 
   }
   stages {
     stage('Build') {
       steps {
-        sh '''pwd
-ls -l
-npm install'''
+        sh 'npm install'
       }
     }
 
